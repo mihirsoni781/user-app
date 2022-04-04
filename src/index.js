@@ -3,11 +3,21 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-
+import { BrowserRouter } from 'react-router-dom';
+import Context from './store/context';
+import useGlobalState from './store/useGlobalState';
+const Index = () => {
+  const store = useGlobalState();
+  return (<React.StrictMode>
+    <Context.Provider value={store} >
+      <BrowserRouter>
+        <App />
+      </BrowserRouter>
+    </Context.Provider>
+  </React.StrictMode>)
+}
 ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
+  <Index />,
   document.getElementById('root')
 );
 
